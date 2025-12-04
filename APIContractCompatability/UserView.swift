@@ -15,9 +15,9 @@ struct UserView: View {
             List {
                 ForEach(userViewModel.users) { user in
                     VStack(alignment: .leading) {
-                        Text("User first name: \(user.firstName)")
+                        Text("First name: \(user.firstName)")
                             .font(.title)
-                        Text("User last name: \(user.lastName)")
+                        Text("Last name: \(user.lastName)")
                             .font(.title)
                     }
                 }
