@@ -1,27 +1,19 @@
 //
-//  ResourceManager.swift
-//  APIContractCompatability
+//  MockUserResourceManager.swift
+//  APIContractCompatabilityTests
 //
-//  Created by Roshan Sah on 03/12/25.
+//  Created by Roshan Sah on 04/12/25.
 //
 
 import Foundation
-
-protocol ResourceManager {
-    associatedtype T: Decodable
-    func fetchUsers(for apiContract: APIContractVersion) throws -> [T]
-}
-
-enum APIContractVersion: String {
-    case v1
-    case v2
-}
+@testable import APIContractCompatability
 
 @MainActor
-struct UserResourceManager: @MainActor ResourceManager {
+final class MockUserResourceManager:  @MainActor ResourceManager {
     
     func fetchUsers(for apiContract: APIContractVersion) throws -> [User] {
-        guard let resourceURL = Bundle.main.url(forResource: apiContract.rawValue, withExtension: "json") else {
+        
+        guard let resourceURL = Bundle(for: type(of: self)).url(forResource: apiContract.rawValue, withExtension: "json") else {
             return []
         }
         do {
@@ -33,6 +25,7 @@ struct UserResourceManager: @MainActor ResourceManager {
         }
     }
     
+    // Ensure mapping to main actor-isolated User initializers happens on the main actor
     private func decodeUsers(from data: Data, version: APIContractVersion) throws -> [User] {
         switch version {
         case .v1:
@@ -44,3 +37,4 @@ struct UserResourceManager: @MainActor ResourceManager {
         }
     }
 }
+

@@ -8,21 +8,24 @@
 import Foundation
 import Combine
 
-final class UserViewModel: ObservableObject {
+final class UserViewModel<Manager: ResourceManager>: ObservableObject where Manager.T == User {
     @Published var users: [User] = []
+    let resourceManager: Manager
     
-    init() {
-        fetchUsers()
+    init(resourceManager: Manager) {
+        self.resourceManager = resourceManager
     }
     
-    func fetchUsers()  {
+    // For simplicity purpose its sync func as its
+    func fetchUsers(for apiContract: APIContractVersion = .v1)  {
         do {
             // Version of API can be set from here,
             // Notice that consumer side has no impact on change of API contract.
             // Try setting `APIContractVersion` to v1 and v2
-            users = try UserResourceManager.shared.fetchUsers(for: .v2)
+            users = try resourceManager.fetchUsers(for: apiContract)
         } catch {
             users = []
         }
     }
 }
+

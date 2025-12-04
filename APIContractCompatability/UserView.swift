@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
-    @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var userViewModel = UserViewModel(resourceManager: UserResourceManager())
     
     var body: some View {
         NavigationStack {
@@ -23,6 +23,9 @@ struct UserView: View {
                 }
             }
             .navigationTitle("Backward Compatable")
+            .onAppear {
+                userViewModel.fetchUsers()
+            }
         }
     }
 }
