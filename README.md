@@ -6,4 +6,10 @@ This project demonstrates API versioning contracts in Swift. It shows how to des
 - Demonstrate how to decode different JSON structures (UserV1, UserV2) into a unified User model.
 - Provide a protocol-driven ResourceManager for fetching data.
 - Illustrate Combine-friendly ViewModel design for SwiftUI integration.
-- Enable unit testing with mocks to validate contract compatibility.
+- Enable unit testing with stub to validate contract compatibility.
+
+## 🧭 Architecture Diagram
+The following diagram illustrates how user data is fetched from different API contract versions and unified into a single model for backward-compatible rendering:
+
+<img src="https://github.com/Roshankumar350/APIContractCompatability/blob/main/Flow.png?raw=true" width="900"/>
+
