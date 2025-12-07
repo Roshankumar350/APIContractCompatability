@@ -11,5 +11,5 @@ This project demonstrates API versioning contracts in Swift. It shows how to des
 ## 🧭 Architecture Diagram
 The following diagram illustrates how user data is fetched from different API contract versions and unified into a single model for backward-compatible rendering:
 
-<img src="https://github.com/Roshankumar350/APIContractCompatability/blob/main/Flow.png?raw=true" width="900"/>
+<img src="https://github.com/Roshankumar350/APIContractCompatability/blob/main/user-iOS/Flow.png" width="900"/>
 
