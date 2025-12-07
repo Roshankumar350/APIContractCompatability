@@ -24,7 +24,14 @@ struct UserView: View {
             }
             .navigationTitle("Backward Compatable")
             .onAppear {
-                userViewModel.fetchUsers()
+                // TODO: isAsyncFetchEnabled set to true or false 
+                if userViewModel.isAsyncFetchEnabled {
+                    Task {
+                        await userViewModel.fetchAsyncUsers()
+                    }
+                } else {
+                    userViewModel.fetchUsers()
+                }
             }
         }
     }

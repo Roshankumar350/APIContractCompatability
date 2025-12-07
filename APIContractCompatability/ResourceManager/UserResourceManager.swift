@@ -23,6 +23,23 @@ struct UserResourceManager: @MainActor ResourceManager {
         }
     }
     
+    func fetchAsyncUsers(for apiContract: APIContractVersion) async throws -> [User] {
+        guard let url = URL(string: "http://localhost:3000/\(apiContract.rawValue)/users") else {
+            return []
+        }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpResponse.statusCode)")
+            }
+            return try decodeUsers(from: data, version: apiContract)
+        } catch {
+            debugPrint(error)
+            throw error
+        }
+    }
+    
     private func decodeUsers(from data: Data, version: APIContractVersion) throws -> [User] {
         switch version {
         case .v1:
