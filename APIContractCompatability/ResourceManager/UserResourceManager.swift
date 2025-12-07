@@ -1,19 +1,17 @@
 //
-//  MockUserResourceManager.swift
-//  APIContractCompatabilityTests
+//  UserResourceManager.swift
+//  APIContractCompatability
 //
-//  Created by Roshan Sah on 04/12/25.
+//  Created by Roshan Sah on 07/12/25.
 //
 
 import Foundation
-@testable import APIContractCompatability
 
 @MainActor
-final class MockUserResourceManager:  @MainActor ResourceManager {
+struct UserResourceManager: @MainActor ResourceManager {
     
     func fetchUsers(for apiContract: APIContractVersion) throws -> [User] {
-        
-        guard let resourceURL = Bundle(for: type(of: self)).url(forResource: apiContract.rawValue, withExtension: "json") else {
+        guard let resourceURL = Bundle.main.url(forResource: apiContract.rawValue, withExtension: "json") else {
             return []
         }
         do {
@@ -36,4 +34,3 @@ final class MockUserResourceManager:  @MainActor ResourceManager {
         }
     }
 }
-

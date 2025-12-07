@@ -8,7 +8,12 @@
 import Foundation
 
 struct UserV1: Identifiable, Decodable {
-    var id: UUID? = UUID()
+    let id = UUID()
     var firstName: String
     var lastName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case firstName
+        case lastName
+    }
 }

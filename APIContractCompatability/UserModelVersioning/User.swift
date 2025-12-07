@@ -8,7 +8,7 @@
 import Foundation
 
 struct User: Identifiable, Decodable {
-    var id: UUID? = UUID()
+    var id = UUID()
     let firstName: String
     let lastName: String
     
@@ -27,6 +27,16 @@ extension User {
         let parts = v2.fullName.components(separatedBy: " ")
         self.firstName = parts.first ?? ""
         self.lastName = parts.dropFirst().joined(separator: " ")
+    }
+}
+
+extension User: CustomDebugStringConvertible {
+    var debugDescription: String {
+            """
+            
+            (firstName: \(firstName), lastName: \(lastName))
+            
+            """
     }
 }
 

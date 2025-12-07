@@ -23,6 +23,7 @@ final class UserViewModel<Manager: ResourceManager>: ObservableObject where Mana
             // Notice that consumer side has no impact on change of API contract.
             // Try setting `APIContractVersion` to v1 and v2
             users = try resourceManager.fetchUsers(for: apiContract)
+            print("ApiContract version is \(apiContract) and users are: \(users)")
         } catch {
             users = []
         }

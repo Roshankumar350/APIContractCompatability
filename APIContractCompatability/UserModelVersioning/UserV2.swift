@@ -8,6 +8,10 @@
 import Foundation
 
 struct UserV2: Identifiable, Decodable {
-    var id: UUID? = UUID()
+    let id = UUID()
     let fullName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case fullName
+    }
 }
