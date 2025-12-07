@@ -1,0 +1,17 @@
+import { User } from "../models/user";
+
+console.log("[Data] users.ts loaded");
+
+export const users: User[] = [
+  { firstName: "Ava", lastName: "Sharma" },
+  { firstName: "Ben", lastName: "Carter" },
+  { firstName: "Chloe", lastName: "Davis" },
+  { firstName: "David", lastName: "Chen" },
+  { firstName: "Elena", lastName: "Volkova" },
+  { firstName: "Finn", lastName: "Muller" },
+  { firstName: "Grace", lastName: "Lopez" },
+  { firstName: "Henry", lastName: "Ng" },
+  { firstName: "Isla", lastName: "Patel" },
+  { firstName: "Jack", lastName: "Thompson" }
+];
+
