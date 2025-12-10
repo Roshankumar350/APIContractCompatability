@@ -24,7 +24,7 @@ src/
 ## ⚙️ Setup
 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/user-api.git
+git clone https://github.com/Roshankumar350/APIContractCompatability.git
 cd user-api
 ```
 2. Install dependencies
