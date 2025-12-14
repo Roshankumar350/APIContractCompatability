@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 final class MockUserResourceManager:  @MainActor ResourceManager {
     
-    func fetchUsers(for apiContract: APIContractVersion) throws -> [User] {
+    func fetch(for apiContract: APIContractVersion) throws -> [User] {
         
         guard let resourceURL = Bundle(for: type(of: self)).url(forResource: apiContract.rawValue, withExtension: "json") else {
             return []

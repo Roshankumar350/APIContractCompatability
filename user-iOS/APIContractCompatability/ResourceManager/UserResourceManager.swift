@@ -10,7 +10,7 @@ import Foundation
 @MainActor
 struct UserResourceManager: @MainActor ResourceManager {
     
-    func fetchUsers(for apiContract: APIContractVersion) throws -> [User] {
+    func fetch(for apiContract: APIContractVersion) throws -> [User] {
         guard let resourceURL = Bundle.main.url(forResource: apiContract.rawValue, withExtension: "json") else {
             return []
         }
@@ -23,7 +23,7 @@ struct UserResourceManager: @MainActor ResourceManager {
         }
     }
     
-    func fetchAsyncUsers(for apiContract: APIContractVersion) async throws -> [User] {
+    func asyncFetch(for apiContract: APIContractVersion) async throws -> [User] {
         guard let url = URL(string: "http://localhost:3000/\(apiContract.rawValue)/users") else {
             return []
         }
