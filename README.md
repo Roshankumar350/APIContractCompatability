@@ -11,7 +11,7 @@ When contracts evolve (e.g., adding/removing fields, changing structure), client
 
 This demo highlights:
 - How versioned APIs prevent breaking changes.
-- How Swift models (`User`, `UserV2`) map to different contracts.
+- How Swift models (`UserV1`, `UserV2`) map to different contracts.
 - How async/await networking handles responses gracefully.
 
 ## Repositories
