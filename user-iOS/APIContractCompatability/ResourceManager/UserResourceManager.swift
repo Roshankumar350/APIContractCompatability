@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-struct UserResourceManager: @MainActor ResourceManager {
+final class UserResourceManager: @MainActor ResourceManager {
     
     func fetch(for apiContract: APIContractVersion) throws -> [User] {
         guard let resourceURL = Bundle.main.url(forResource: apiContract.rawValue, withExtension: "json") else {
